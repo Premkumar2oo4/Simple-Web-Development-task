@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 95vw;
+    height: 90vh;
+    background-color: tomato;
+    padding: 95px;
+    animation: PremAnimtion 0.5s cubic-bezier(0.5, 0.26, 0.55, 0.81) 0.5s infinite reverse ;
+}
+.box{
+    width: 30vw;
+    height: 30vh;
+    background-color: yellowgreen;
+    animation-name: ani;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.5, 0.26, 0.55, 0.81);
+    animation-delay: 3s;
+    animation-direction: alternate-reverse;
+    animation-iteration-count: infinite;
+
+    
+}
+@keyframes PremAnimtion {
+    from{
+        background-color: yellowgreen;
+    }
+    to{
+        background-color: tomato;
+    }
+    
+}
+@keyframes ani {
+    
+    
+    
+    90%{
+        transform: rotate(330deg);
+        transform: translateX(60vw);
+        transform: translateY(60vh);
+    }
+  
+    
+}
