@@ -1,0 +1,146 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: blue;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+}
+
+.box {
+    background-color: red;
+    width: 5vw;
+    height: 10vh;
+    border-radius: 100px;
+    position: absolute;
+    bottom: 0px;
+    animation: animeX 3s linear infinite, animeY 1s ease-out infinite alternate;
+}
+
+.b1 {
+    width: 5vw;
+    height: 10vh;
+    border-radius: 100px;
+    position: absolute;
+    bottom: 0px;
+    animation: animeX 5s linear infinite, animeY 1s ease-out infinite alternate;
+}
+
+.b2 {
+    background-color: red;
+    width: 5vw;
+    height: 10vh;
+    border-radius: 100px;
+    position: absolute;
+    bottom: 0px;
+    animation: animeX 3s linear infinite, animeY 2s ease-out infinite alternate;
+}
+
+.b3 {
+    background-color: red;
+    width: 5vw;
+    height: 10vh;
+    border-radius: 100px;
+    position: absolute;
+    bottom: 0px;
+    animation: animeX 4s linear infinite, animeY 1s ease-out infinite alternate;
+}
+
+.b4 {
+    background-color: red;
+    width: 5vw;
+    height: 10vh;
+    border-radius: 100px;
+    position: absolute;
+    bottom: 0px;
+    animation: animeX 10s linear infinite, animeY 1s ease-out infinite alternate;
+}
+
+.b5 {
+    background-color: red;
+    width: 5vw;
+    height: 10vh;
+    border-radius: 100px;
+    position: absolute;
+    bottom: 0px;
+    animation: animeX 2s linear infinite, animeY 2s ease-out infinite alternate;
+}
+
+.b6 {
+    background-color: red;
+    width: 5vw;
+    height: 10vh;
+    border-radius: 100px;
+    position: absolute;
+    bottom: 0px;
+    animation: animeX 2s linear infinite, animeY 2s ease-out infinite alternate;
+}
+
+img {
+    width: 5vw;
+    height: 10vh;
+    border: none;
+    border-radius: 100px;
+    position: absolute;
+    bottom: 0px;
+    animation: animeX 2s linear infinite, animeY 2s ease-out infinite alternate;
+}
+
+@keyframes animeX {
+    from {
+        left: 0;
+    }
+
+    25% {
+        transform: rotate(90deg);
+    }
+
+    30% {
+        transform: rotate(100deg);
+    }
+
+    40% {
+        transform: rotate(150deg);
+    }
+
+    50% {
+        transform: rotate(200deg);
+    }
+
+    60% {
+        transform: rotate(250deg);
+    }
+
+    75% {
+        transform: rotate(300deg);
+    }
+
+    80% {
+        transform: rotate(310deg);
+    }
+
+    90% {
+        transform: rotate(330deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes animeY {
+    from {
+        bottom: 0;
+    }
+
+    to {
+        bottom: 100%;
+    }
+}
