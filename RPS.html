@@ -1,131 +1,89 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-    function getComputerchoice(){
-        let computerChoice = Math.floor(Math.random() * 3);
-    
-        if(computerChoice === 0){
-            return "rock";
-        }
-        else if (computerChoice === 1){
-            return "paper";
-        }
-        else{
-            return "scissors";
-        }
-    }
-    
-    function getHumanChoice(){
-        let humanChoice = prompt("Enter your choice");
-        humanChoice = humanChoice.toLowerCase()
-    
-        if(humanChoice === "rock" || humanChoice ==="paper" || humanChoice === "scissors"){
-            return humanChoice;
-        }
-        else{
-            console.log("Invalid input");
-            // roundCounter = roundCounter;
-        }
-        
-    }
-    
-    let roundCounter = 1;
-    let humanScore = 0;
-    let computerScore = 0;
-    
-    function playRound(humanChoice, computerChoice){
-        if (humanChoice === "rock" && computerChoice === "rock"){
-            console.log("Round: " + roundCounter);
-            console.log("draw!");
-            console.log(`The score is ${humanScore} : ${computerScore}`);
-            roundCounter++; 
-        }
-        else if (humanChoice === "rock" && computerChoice === "paper"){
-            console.log("Round: " + roundCounter);
-            console.log("You loose! Paper beats rock!");
-            computerScore ++;
-            console.log(`The score is ${humanScore} : ${computerScore}`);
-            roundCounter++; 
-        }
-        else if (humanChoice === "rock" && computerChoice === "scissors"){
-            console.log("Round: " + roundCounter);
-            console.log("You win! Rock beats paper!");
-            humanScore ++;
-            console.log(`The score is ${humanScore} : ${computerScore}`);
-            roundCounter++; 
-        }
-        else if (humanChoice === "paper" && computerChoice === "rock"){
-            console.log("Round: " + roundCounter);
-            console.log("You win! Ppaer beats rock!");
-            humanScore ++;
-            console.log(`The score is ${humanScore} : ${computerScore}`);
-            roundCounter++; 
-        }
-        else if (humanChoice === "paper" && computerChoice === "paper"){
-            console.log("Round: " + roundCounter);
-            console.log("draw!");
-            console.log(`The score is ${humanScore} : ${computerScore}`);
-            roundCounter++; 
-        }
-        else if (humanChoice === "paper" && computerChoice === "scissors"){
-            console.log("Round: " + roundCounter);
-            console.log("You loose! Scissors beats paper!");
-            computerScore ++;
-            console.log(`The score is ${humanScore} : ${computerScore}`);
-            roundCounter++; 
-        }
-        else if (humanChoice === "scissors" && computerChoice === "rock"){
-            console.log("Round: " + roundCounter);
-            console.log("You loose! Rock beats scissors!");
-            computerScore ++;
-            console.log(`The score is ${humanScore} : ${computerScore}`);
-            roundCounter++; 
-        }
-        else if (humanChoice === "scissors" && computerChoice === "paper"){
-            console.log("Round: " + roundCounter);
-            console.log("You win! Scissors beats paper!");
-            humanScore ++;
-            console.log(`The score is ${humanScore} : ${computerScore}`);
-            roundCounter++; 
-        }
-        else if (humanChoice === "scissors" && computerChoice === "scissors"){
-            console.log("Round: " + roundCounter);
-            console.log("draw!");
-            console.log(`The score is ${humanScore} : ${computerScore}`);
-            roundCounter++; 
-        }
-    }
-    
-    function playGame(){
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerchoice();
-        playRound(humanSelection, computerSelection); 
-    
-        if (roundCounter <= 5){
-            playGame();      
-        }
-        else{
-            roundCounter = 1;
-            console.log(`-------- FINAL RESULT: ${humanScore} : ${computerScore} --------`);
-            if(humanScore > computerScore){
-                console.log("Congrats! You won!");
+        function getHumanChice() {
+            let HumanChoice = prompt("ENTER YOUR CHOICE(ROCK,PAPER,SEASOR):");
+            HumanChoice = HumanChoice.toLowerCase();
+            if (HumanChoice === "rock" || HumanChoice === "paper" || HumanChoice === "seasor") {
+                return HumanChoice;
             }
-            else if (humanScore < computerScore){
-                console.log("Try next time! This time computer won!");
-            } 
-            else{
-                console.log("It's draw");
+            else {
+                alert("INVALID CHOICE");
             }
         }
-    }</script>
+        function getComputerChoice() {
+            let ComputerChoice = Math.floor(Math.random() * 3);
+            if (ComputerChoice === 1) {
+                return "rock"
+            }
+            else if (ComputerChoice === 2) {
+                return "paper"
+            }
+            else {
+                return "seasor";
+            }
+
+        }
+        let RoundCount = 1;
+        let HumanScore = 0;
+        let ComputerScore = 0;
+        function PlayRound(HumanChoice, ComputerChoice) {
+            if ((HumanChoice === "rock" && ComputerChoice === "rock") || (HumanChoice === "paper" && ComputerChoice === "paper") || (HumanChoice === "seasor" && ComputerChoice === "seasor")) {
+                console.log(`Round ${RoundCount}`);
+                RoundCount++;
+                console.log("It's Draw");
+                console.log(`The SCore of Human: computer is ${HumanScore}:${ComputerScore}`);
+            } if ((HumanChoice === "rock" && ComputerChoice === "paper") || (HumanChoice === "paper" && ComputerChoice === "seasor") || (HumanChoice === "seasor" && ComputerChoice === "rock") || (HumanChoice === "paper" && ComputerChoice === "rock")) {
+                console.log(`Round ${RoundCount}`);
+                RoundCount++;
+                ComputerScore++;
+                console.log("paper beats rock the you are lose");
+                console.log(`The SCore of Human: computer is ${HumanScore}:${ComputerScore}`);
+            } if ((HumanChoice === "rock" && ComputerChoice === "seasor") || (HumanChoice === "seasor" && ComputerChoice === "paper")) {
+                console.log(`Round ${RoundCount}`);
+                RoundCount++;
+                HumanScore++;
+                console.log("rock beats seasor the you are win");
+                console.log(`The SCore of Human: computer is ${HumanScore}:${ComputerScore}`);
+            }
+        }
+        function playgame() {
+            let HumanChoice = getHumanChice();
+            let ComputerChoice = getComputerChoice();
+            PlayRound(HumanChoice, ComputerChoice);
+            if (RoundCount <= 5) {
+                playgame()
+            }
+            else {
+                RoundCount = 1;
+                if (HumanScore > ComputerScore) {
+                    console.log(`The SCore of Human : computer is ${HumanScore}:${ComputerScore}`);
+                    console.log('You win');
+                    
+                }
+                if (ComputerScore > HumanScore) {
+                    console.log(`The SCore of Human : computer is ${HumanScore}:${ComputerScore}`);
+                    console.log('You loose');                  
+                }
+                if (HumanScore === ComputerScore) {
+                    console.log(`The SCore of Human : computer is ${HumanScore}:${ComputerScore}`);
+                    console.log('it;s draw');                
+                }
+            }
+        }
+    </script>
 </head>
+
 <body>
-    <button onclick="playGame()">Play rock paper scissors!</button>
- 
+    <button onclick="playgame()">play it</button>
+<div class="result">
+
+    </div>
 </body>
+
 </html>
