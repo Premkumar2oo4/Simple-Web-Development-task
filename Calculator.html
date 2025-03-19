@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const display = document.querySelector(".display");
+            const buttons = document.querySelectorAll(".btn");
+            let firstNum = "";
+            let secondNum = "";
+            let operator = "";
+            const calculate = (op, num1, num2) => {
+                const operations = {
+                    '+': (a, b) => a + b,
+                    '-': (a, b) => a - b,
+                    '*': (a, b) => a * b,
+                    '÷': (a, b) => (b === 0 ? 'Error' : a / b)
+                };
+                return operations[op](+num1, +num2);
+            };
+            buttons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const val = button.textContent;
+                    if (button.classList.contains("digit")) {
+                        if (operator) {
+                            secondNum += val;
+                        } else {
+                            firstNum += val;
+                        }
+                    }
+                    if (button.classList.contains("operation")) {
+                        if (firstNum && !secondNum) {
+                            operator = val;
+                        }
+                    }
+                    if (button.classList.contains("ans")) {
+                        if (firstNum && secondNum) {
+                            firstNum = String(calculate(operator, firstNum, secondNum));
+                            secondNum = "";
+                            operator = "";
+                        }
+                    }
+                    if (button.classList.contains("clear")) {
+                        firstNum = "";
+                        secondNum = "";
+                        operator = "";
+                    }
+                    if (button.classList.contains("back")) {
+                        if (secondNum) {
+                            secondNum = secondNum.slice(0, -1);
+                        } else if (operator) {
+                            operator = "";
+                        } else if (firstNum) {
+                            firstNum = firstNum.slice(0, -1);
+                        }
+                    }
+                    display.textContent = firstNum + (operator ? ` ${operator} ` : "") + secondNum;
+                    if (!display.textContent) {
+                        display.textContent = "0";
+                    }
+                });
+            });
+        });
+    </script>
+    <style>
+        * {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: black;
+            color: white;
+
+        }
+        .intro {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 50px;
+        }
+        .out-container {
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cal-container {
+            height: 500px;
+            width: 320px;
+            border-radius: 10px;
+            border: 5px solid rgb(0, 208, 255);
+            box-shadow: 0px 0px 100px rgb(200, 255, 0);
+            animation: background 3s infinite ease-in-out;
+        }
+        .display {
+            background-color: white;
+            margin: 8px 5px;
+            font-size: 40px;
+            border-radius: 10px;
+            border: 2px solid black;
+            padding: 10px;
+            display: flex;
+            justify-content: flex-end;
+            font-weight: 200;
+            color: rgb(0, 0, 0);
+        }
+        .btn {
+            font-size: larger;
+            padding: 6px;
+            border: 2px solid rgba(0, 0, 0, 0.763);
+            padding: 25px;
+            font-size: large;
+            flex: 1;
+
+        }
+        .button {
+            display: flex;
+            gap: 1px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 8px 5px;
+        }
+        .operation {
+            background-color: rgba(127, 255, 212);
+        }
+        .operation:hover {
+            transform: scale(1.3);
+            background-color: aqua
+        }
+        .clear {
+            background-color: rgb(212, 57, 57);
+        }
+        .clear:hover {
+            background-color: red;
+            color: white;
+            transform: scale(1.3);
+
+        }
+        .digit {
+            background-color: white;
+        }
+        .digit:hover {
+            background-color: rgb(191, 203, 214);
+            font-weight: 800;
+            transform: scale(1.3);
+        }
+        .back {
+            background-color: rgba(165, 42, 42);
+            color: white;
+        }
+        .back:hover {
+            color: red;
+            font-weight: 800px;
+            transform: scale(1.1);
+        }
+        .ans:hover {
+            color: rgb(255, 60, 0);
+            background-color: yellow;
+            font-weight: 800px;
+            transform: scale(1.3);
+        }
+        .desimal:hover {
+            background-color: rgb(191, 203, 214);
+            font-weight: 800;
+            transform: scale(1.1);
+        }
+        @keyframes background {
+            0% {
+                background: linear-gradient(to left, red, blue, pink, yellow, brown, green);
+            }
+            20% {
+                background: linear-gradient(to left, green, brown, yellow, pink, blue, red);
+
+            }
+            40% {
+                background: radial-gradient(pink, yellow, brown, red, blue, green);
+            }
+            60% {
+                background: linear-gradient(to left, brown, pink, red, blue, yellow);
+            }
+            80% {
+                background: linear-gradient(to left, red, pink, blue, green, yellow);
+            }
+            100% {
+                background: linear-gradient(to left, yellow, pink, red, blue, orange, );
+            }
+        }
+    </style>
+    <script>
+        const display = document.querySelector('.display');
+        const buttons = document.querySelectorAll('.btn');
+        let firstNum = '', secondNum = '', operator = '';
+        const calculate = (op, num1, num2) => ({
+            '+': (a, b) => a + b, '-': (a, b) => a - b,
+            '*': (a, b) => a * b, '÷': (a, b) => (b === 0 ? 'Error' : a / b)
+        })[op](+num1, +num2);
+        document.addEventListener('click', (e) => {
+            const btn = e.target;
+            const val = btn.textContent;
+            if (btn.classList.contains('btn')) {
+                if (btn.classList.contains('digit')) {
+                    if (operator.length === 0) {
+                        firstNum += val;
+                    } else {
+                        secondNum += val;
+                    }
+                }
+                if (btn.classList.contains('operation')) {
+                    if (firstNum.length > 0 && secondNum.length === 0) {
+                        operator = val;
+                    }
+                }
+                if (btn.classList.contains('ans')) {
+                    if (firstNum.length > 0 && secondNum.length > 0) {
+                        firstNum = String(calculate(operator, firstNum, secondNum));
+                        secondNum = '';
+                        operator = '';
+                    }
+                }
+                if (btn.classList.contains('clear')) {
+                    firstNum = '';
+                    secondNum = '';
+                    operator = '';
+                }
+                if (btn.classList.contains('back')) {
+                    if (secondNum.length > 0) {
+                        secondNum = secondNum.slice(0, -1);
+                    } else if (operator.length > 0) {
+                        operator = '';
+                    } else if (firstNum.length > 0) {
+                        firstNum = firstNum.slice(0, -1);
+                    }
+                }
+                display.textContent = firstNum + (operator.length > 0 ? ` ${operator} ` : '') + secondNum;
+
+                if (display.textContent.length === 0) {
+                    display.textContent = '0';
+                }
+            }
+        });
+    </script>
+</head>
+</head>
+<body>
+    <div class="intro">
+        <h1>Calculator</h1>
+        <h6>By premkumar Bhadagave</h6>
+    </div>
+    <div class="out-container">
+        <div class="cal-container">
+            <div class="display">hello!</div>
+            <div class="button">
+                <button class="btn digit">1</button>
+                <button class="btn digit">2</button>
+                <button class="btn digit">3</button>
+                <button class="btn operation">+</button>
+                <button class="btn digit">4</button>
+                <button class="btn digit">5</button>
+                <button class="btn digit">6</button>
+                <button class="btn operation">-</button>
+                <button class="btn digit">7</button>
+                <button class="btn digit">8</button>
+                <button class="btn digit">9</button>
+                <button class="btn operation">*</button>
+                <button class="btn clear">C</button>
+                <button class="btn digit ">0</button>
+                <button class="btn ans">=</button>
+                <button class="btn operation">÷</button>
+                <button class="btn desimal">.</button>
+                <button class="btn back">←</button>
+            </div>
+        </div>
+    </div>
+    <div class="message"></div>
+</body>
+</html>
