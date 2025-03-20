@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;
+        }
+        body{
+            background-color: black;
+            overflow: hidden;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .vision{
+            height: 420px;
+            width: 420px;
+            position: relative;
+            
+        }
+        
+        
+        .vision span:nth-child(2){
+            background-image: radial-gradient(rgba(0, 0, 0, 0) 50%,rgb(255, 72, 0) 50%);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0px 0px 100px rgb(255, 0, 0),inset 0px 0px 100px rgb(255, 81, 0);
+            border-radius: 30% 60% 60% 30% / 50% 45% 60% 60%;
+            cursor: pointer;
+            animation: anime2 10s linear  infinite ;
+        }
+        .vision span:nth-child(3){
+            background-image: radial-gradient(rgba(0, 0, 0, 0) 50%,rgb(195, 255, 0) 50%);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0px 0px 100px rgb(5, 255, 50),inset 0px 0px 100px rgb(34, 255, 0);
+            border-radius: 30% 60% 60% 30% / 50% 45% 60% 60%;
+            cursor: pointer;
+            animation: anime3 20s linear  infinite ;
+        }
+        .vision span:nth-child(4){
+            background-image: radial-gradient(rgba(0, 0, 0, 0) 50%,rgb(51, 0, 255) 50%);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0px 0px 100px rgb(72, 0, 255),inset 0px 0px 100px rgb(136, 0, 255);
+            border-radius: 90% 50% 90% 80% / 50% 45% 60% 60%;
+            cursor: pointer;
+            animation: anime1 30s linear  infinite ;
+        }
+        @keyframes anime1 {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(180deg);
+            }            
+        }
+        @keyframes anime2 {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(270deg);
+            }
+            
+        }
+        @keyframes anime3 {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+img{
+    position: absolute;
+    top: 10px;
+    left: 35px;
+    z-index: 10;
+    border-radius: 50%;
+    height: 350px;
+}
+    </style>
+</head>
+<body>
+   <div class="container">
+    <div class="vision">
+        <img src="prem.png" alt="">
+        <span class="circle"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
+    </div>
+   </div> 
+</body>
+</html>
