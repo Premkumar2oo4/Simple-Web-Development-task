@@ -1,45 +1,23 @@
 
 let random=Math.random()
 let result=random*100;
-let num1=1//prompt("enter your first number")
-let num2=2//prompt("enter your second number")
-let operation='-'//prompt("enter your operation")
+let num1=prompt("enter your first number")
+let num2=prompt("enter your second number")
+let operation=prompt("enter your operation")
 console.log(result)
+let obj={
+    '+':'-',
+    '-':'/',
+    '*':'+',
+    '/':'**',
+    '%':'*'
+}
+
 if(result>10){
-    switch(operation){
-        case '-':
-            console.log(num1-num2);
-            break;
-        case '+':
-            console.log(num1+num2);
-            break;
-        case '*':
-            console.log(num1*num2);
-            break;
-        case '/':
-            console.log(num1/num2);
-            break;
-        case '%':
-            console.log(num1%num2);
-            break;
-    }
+   alert(`THE ANS IS : ${eval(`${num1} ${operation} ${num2}`)}`)
+        
 }
 else{
-    switch(operation){
-        case '-':
-            console.log(num1/num2);
-            break;
-        case '+':
-            console.log(num1-num2);
-            break;
-        case '*':
-            console.log(num1+num2);
-            break;
-        case '/':
-            console.log(num1**num2);
-            break;
-        case '%':
-            console.log(num1*num2);
-            break;
-    }
+    let c=obj[operation]
+    alert(`THE ANS IS : ${eval(`${num1} ${c} ${num2}`)}`)
 }
