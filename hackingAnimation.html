@@ -6,77 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@600&family=Noto+Sans:ital,wght@0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&family=Poppins:wght@300;400;700&display=swap');
-
-        body {
+        body{
             background-color: black;
             color: green;
-            font-family: 'Martel Sans', sans-serif;
-            font-size: 40px;
-            text-align: center;
-            
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         }
+        div{
+            margin-left:40% ;
+            font-size: 50px;
+       }
         
     </style>
 </head>
-
-<body>
-   
-    <div>Initializing Hacking...</div>
+<body >
+    <img src="" alt="">
+    <div>Initializing ...</div>
     <script>
-
-
-
-        const addItem = async (item) => {
-            await randomDelay();
+        const additem = async (item) => {
+            await randomdelay();
             let div = document.createElement("div");
-            div.innerHTML = item;
+            div.innerHTML = item
             document.body.append(div)
         }
-
-        const randomDelay = () => {
+        const randomdelay = () => {
             return new Promise((resolve, reject) => {
-                timeout = 1 + 6 * Math.random();
+                tempcount = 1 + Math.random() * 9;
                 setTimeout(() => {
-                    resolve()
-                }, timeout * 1000);
+                    resolve();
+                }, tempcount * 1000);
             })
         }
-
         async function main() {
+        let t = setInterval(() => {
+            last = document.body.getElementsByTagName("div");
+            last = last[last.length - 1];
+            if (last.innerHTML.endsWith("...")) {
+                last.innerHTML = last.innerHTML.slice(0, last.innerHTML.length - 3);
 
-
-            let t = setInterval(() => {
-                let last = document.body.getElementsByTagName("div");
-                last = last[last.length - 1]
-                if(last.innerHTML.endsWith("...")){
-                    last.innerHTML = last.innerHTML.slice(0, last.innerHTML.length-3)
-                }
-                else{
-
-                    last.innerHTML = last.innerHTML + "."
-                }
-
-            }, 100);
-
-
-            let text = ["Initialized Hacking now reading your data",
-                "Reading your Files",
-                "Password files Detected",
-                "Sending all passwords and personal files to server",
-                "Cleaning up","💀"]
-
-            for (const item of text) {
-                await addItem(item)
+            } else {
+                last.innerHTML = last.innerHTML + "..........";
             }
-
-            await randomDelay()
-            clearInterval(t)
-            
+        }, 100)
+        let text = [ "Accessing mainframe...",
+            "Bypassing firewall...",
+            "Cracking password hash...",
+            "Password found: ********",
+            "Uploading payload...",
+            "Downloading sensitive data...",
+            "Data exfiltrated to remote server.",
+            "System shutdown initiated.",
+            "💀 HACK COMPLETE 💀"]
+        for (const item of text) {
+            await additem(item);
         }
-        main()
-        
+        await randomdelay();
+        clearInterval(t);
+    }
+    main()
     </script>
 </body>
-
 </html>
